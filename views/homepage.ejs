@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Upload Profile</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f9fa;
+      padding: 40px;
+      text-align: center;
+    }
+
+    .container {
+      background: #fff;
+      padding: 30px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-radius: 10px;
+    }
+
+    h1 {
+      color: #007bff;
+    }
+
+    input[type="file"] {
+      margin: 15px 0;
+    }
+
+    button {
+      background-color: #28a745;
+      color: white;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    .message {
+      margin-top: 20px;
+      color: green;
+      font-weight: bold;
+    }
+
+    .preview {
+      margin-top: 15px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Upload Your Profile File</h1>
+  <p>Supported: .txt, .pdf, .docx</p>
+
+  <% if (message) { %>
+    <div class="message"><%= message %></div>
+  <% } %>
+
+  <form action="/upload" method="POST" enctype="multipart/form-data">
+    <input type="file" name="profilePhoto" accept=".txt,.pdf,.docx" onchange="showFileName(this)" required />
+    <div class="preview" id="fileName"></div>
+    <button type="submit">Upload</button>
+  </form>
+</div>
+
+<script>
+  function showFileName(input) {
+    const fileNameDisplay = document.getElementById("fileName");
+    if (input.files.length > 0) {
+      fileNameDisplay.textContent = `Selected file: ${input.files[0].name}`;
+    } else {
+      fileNameDisplay.textContent = '';
+    }
+  }
+</script>
+
+</body>
+</html>
