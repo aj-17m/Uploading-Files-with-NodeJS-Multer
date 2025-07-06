@@ -11,8 +11,7 @@ This project is a simple Node.js application that allows users to upload `.txt`,
 
 ## Technologies Used
 
-- Node.js
-- Express.js
+- Node.js & Express.js
 - Multer
 - EJS (view engine)
 
